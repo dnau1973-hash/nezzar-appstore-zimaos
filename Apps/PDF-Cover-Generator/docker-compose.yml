@@ -20,7 +20,7 @@ services:
             en_us: Web UI port
             fr_fr: Port de l'interface web
       volumes:
-        - container: /usr/src/app/Media
+        - container: /media
           description:
             en_us: Media folder containing PDFs
             fr_fr: Dossier contenant vos BD et eBooks
