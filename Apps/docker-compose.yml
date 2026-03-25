@@ -1,0 +1,47 @@
+name: pdf-cover-generator
+services:
+  pdf-cover-generator:
+    image: ghcr.io/ton_pseudo/pdf-cover-generator:latest
+    container_name: pdf-cover-generator
+    ports:
+      - target: 3001
+        published: "3001"
+        protocol: tcp
+    volumes:
+      - type: bind
+        source: /media
+        target: /Media
+    restart: unless-stopped
+    x-casaos:
+      envs: []
+      ports:
+        - container: "3001"
+          description:
+            en_us: Web UI port
+            fr_fr: Port de l'interface web
+      volumes:
+        - container: /usr/src/app/Media
+          description:
+            en_us: Media folder containing PDFs
+            fr_fr: Dossier contenant vos BD et eBooks
+
+# --- LE BLOC MAGIQUE POUR LA BOUTIQUE ZIMAOS ---
+x-casaos:
+  architectures:
+    - amd64
+    - arm64
+  main: pdf-cover-generator
+  description:
+    en_us: "A lightweight web app to extract the first page of PDFs (Comics/eBooks) as PNG covers. Preserves aspect ratio automatically."
+    fr_fr: "Générateur de couvertures PNG à partir de fichiers PDF locaux. Idéal pour illustrer votre bibliothèque de médias."
+  tagline:
+    en_us: "PDF Cover Generator"
+    fr_fr: "Générateur de Couvertures PDF"
+  developer: "Ton Pseudo"
+  author: "Ton Pseudo"
+  icon: https://cdn-icons-png.flaticon.com/512/337/337946.png
+  thumbnail: https://cdn-icons-png.flaticon.com/512/337/337946.png
+  title:
+    en_us: PDF Cover Generator
+  category: Utilities
+  port_map: "3001"
