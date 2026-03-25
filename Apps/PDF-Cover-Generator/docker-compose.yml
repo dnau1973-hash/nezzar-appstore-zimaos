@@ -13,8 +13,8 @@ services:
         protocol: tcp
     volumes:
       - type: bind
-        source: /media
-        target: /Media
+        source: /media/Series/Books/bande_dessinee/Adultes
+        target: /usr/src/app/Media
     restart: unless-stopped
     x-casaos:
       envs: []
