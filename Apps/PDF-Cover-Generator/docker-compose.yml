@@ -1,7 +1,7 @@
 name: pdf-cover-generator
 services:
   pdf-cover-generator:
-    image: ghcr.io/ton_pseudo/pdf-cover-generator:latest
+    image: ghcr.io/dnau1973-hash/pdf-cover-generator:latest
     container_name: pdf-cover-generator
     ports:
       - target: 3001
