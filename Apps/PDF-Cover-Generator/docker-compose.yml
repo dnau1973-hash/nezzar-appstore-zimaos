@@ -3,6 +3,10 @@ services:
   pdf-cover-generator:
     image: ghcr.io/dnau1973-hash/pdf-cover-generator:latest
     container_name: pdf-cover-generator
+    environment:
+      - PGID=1000
+      - PUID=1000
+      - TZ=Europe/London
     ports:
       - target: 3001
         published: "3001"
@@ -18,12 +22,7 @@ services:
         - container: "3001"
           description:
             en_us: Web UI port
-            fr_fr: Port de l'interface web
-      volumes:
-        - container: /media
-          description:
-            en_us: Media folder containing PDFs
-            fr_fr: Dossier contenant vos BD et eBooks
+            fr_fr: Port de l'interface web      
 
 # --- LE BLOC MAGIQUE POUR LA BOUTIQUE ZIMAOS ---
 x-casaos:
